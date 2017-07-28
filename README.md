@@ -36,7 +36,7 @@ Once client connection success
 [REQ 1] Client can send a `begin` request
 
     {
-        "req_type":"begine",
+        "req_type":"begin",
         "req_code":"901",
         "req_content":{
 

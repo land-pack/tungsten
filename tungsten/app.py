@@ -1,12 +1,12 @@
 import atexit
 import os
-import json
+import ujson
 import redis
 from tornado import web
 from tornado import ioloop
 from tornado import websocket
 from tornado.options import options, define
-
+from dispatcher import MessageDispatcher
 
 r = redis.Redis("127.0.0.1", 6379)
 
@@ -24,10 +24,26 @@ class WebSocketHandler(websocket.WebSocketHandler):
     def open(self):
     	r.incr(node_id)
     	print("open a connection")
-        self.write_message("Connection successful")
+    	data = {
+
+	        "status":"100",
+	        "stype":"ok",
+	        "data":{
+
+	        }
+	    }
+        self.write_message(ujson.dumps(data))
 
     def on_message(self, msg):
 		self.write_message('response by {}:{}'.format(node_id, msg))
+		try:
+			data = ujson.loads(msg)
+			resp = MessageDispatcher.dis(data)
+		except:
+			print 'error data format'
+			resp = 'invalid_data_format'
+		self.write_message(resp)
+
 
     def on_close(self):
 		r.decr(node_id)
