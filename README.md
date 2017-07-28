@@ -19,3 +19,41 @@ and then your can run the below command.
 test it by visit your url
 
 	ws://localhost:1191/ws
+
+#Data structure
+
+Once client connection success
+    
+    {
+
+        "status":"100",
+        "stype":"ok",
+        "data":{
+
+        }
+    }
+
+[REQ 1] Client can send a `begin` request
+
+    {
+        "req_type":"begine",
+        "req_code":"901",
+        "req_content":{
+
+        }
+    }
+
+[REP 1] Server response client `begin` request
+
+    {
+        "status": "101",
+        "stype": "begin",
+        "data":{
+            "cube_type": "12",
+            "direction": "2",
+            "cid": "32"
+
+        }
+
+    }
+
