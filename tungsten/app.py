@@ -34,8 +34,16 @@ class WebSocketHandler(websocket.WebSocketHandler):
 	    }
         self.write_message(ujson.dumps(data))
 
+
     def on_message(self, msg):
-		self.write_message('response by {}:{}'.format(node_id, msg))
+		print '~~~~~~~~~~~~~'
+		print 'data from client', msg
+		# self.write_message('response by {}:{}'.format(node_id, msg))
+		if msg == 'x':
+			print 'heart beat'
+			self.write_message('y')
+			return 
+
 		try:
 			data = ujson.loads(msg)
 			resp = MessageDispatcher.dis(data)

@@ -65,6 +65,11 @@ Once client connection success
 
 [REP 2] Server response client `begin` request
 
+	#cid@ a unique code to identify a cube during the game time
+	#cube_type@ is number type range 1 to 15
+	#direction@ depend on cube_type
+
+
     {
         "status": "102",
         "stype": "begin",
