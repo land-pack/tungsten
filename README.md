@@ -34,21 +34,39 @@ Once client connection success
 
         }
     }
+[REQ 1] Client send `init` request
 
-[REQ 1] Client can send a `begin` request
+	{
+
+		"req_type": "init",
+		"req_code": "901",
+		"req_content":{
+
+		}
+	}
+
+[REP 1] Server response client `init` request
+
+		"status": "101",
+		"stype": "init",
+		"data":{
+			}
+		}
+
+[REQ 2] Client can send a `begin` request
 
     {
         "req_type":"begin",
-        "req_code":"901",
+        "req_code":"902",
         "req_content":{
 
         }
     }
 
-[REP 1] Server response client `begin` request
+[REP 2] Server response client `begin` request
 
     {
-        "status": "101",
+        "status": "102",
         "stype": "begin",
         "data":{
             "cube_type": "12",
