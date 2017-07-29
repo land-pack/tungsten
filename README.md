@@ -82,3 +82,16 @@ Once client connection success
 
     }
 
+Exception
+=========
+
+[REQ 2] Exception response
+
+Reach the max limit counter of cube 
+
+	 {
+		"status": "401",
+		"stype": "cube_max_limit",
+		"data": {}
+	}
+
